@@ -11,16 +11,25 @@ def restaurant_ratings(filename):
 
     for line in data_score:
         line = line.rstrip()
-        words = line.split(":")
-        restaurant = words[0]
-        score = words[1]
-
+        restaurant, score = line.split(":")
         ratings_log[restaurant] = score
 
-    return ratings_log
+    for restaurant, rating in ratings_log.items():
+        print(f"{restaurant} is rated at {rating}.")
 
-    # for word in words:
-    #     ratings_log[word] =
+    print()
+
+    print('You can add rating for new restaurants. ')
+
+    print()
+
+    new_restaurant = input(' Please, type the restaurant name > ').title()
+    new_restaurant_rating = int(input(' Rating > '))
+
+    ratings_log[new_restaurant] = new_restaurant_rating
+
+    for restaurant, rating in sorted(ratings_log.items()):
+        print(f"{restaurant} is rated at {rating}.")
 
 
-print(restaurant_ratings('scores.txt'))
+restaurant_ratings('scores.txt')
